@@ -1,0 +1,43 @@
+# Assignment 1 – Income Tax Program
+
+
+![Flowchart](flowchart.png)
+
+### TaxTableTools.java
+```java
+public class TaxTableTools {
+    private int[] salaryTable;
+    private double[] taxRateTable;
+    private int nEntries;
+
+    // Default constructor
+    public TaxTableTools() {
+        salaryTable = new int[]{0, 20000, 50000, 100000};
+        taxRateTable = new double[]{0.1, 0.2, 0.25, 0.3};
+        nEntries = salaryTable.length;
+    }
+
+    // Overloaded constructor
+    public TaxTableTools(int[] salaryTable, double[] taxRateTable) {
+        this.salaryTable = salaryTable;
+        this.taxRateTable = taxRateTable;
+        this.nEntries = salaryTable.length;
+    }
+
+    // Setter
+    public void setTables(int[] salaryTable, double[] taxRateTable) {
+        this.salaryTable = salaryTable;
+        this.taxRateTable = taxRateTable;
+        this.nEntries = salaryTable.length;
+    }
+
+    // Method to get tax rate
+    public double getTaxRate(int salary) {
+        for (int i = nEntries - 1; i >= 0; i--) {
+            if (salary >= salaryTable[i]) {
+                return taxRateTable[i];
+            }
+        }
+        return 0.0;
+    }
+} 
